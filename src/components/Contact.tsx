@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, ArrowUpRight, Github, Linkedin, Twitter } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  ArrowUpRight,
+  Github,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
 
 const Contact = () => {
   const socialLinks = [
@@ -21,12 +28,14 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-sm font-mono text-primary mb-4 tracking-wider">// GET IN TOUCH</h2>
+          <h2 className="text-sm font-mono text-primary mb-4 tracking-wider">
+            // GET IN TOUCH
+          </h2>
           <h3 className="text-4xl md:text-5xl font-bold mb-6">
             Let's <span className="gradient-text">Connect</span>
           </h3>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Have a project in mind or just want to chat? Feel free to reach out. 
+            Have a project in mind or just want to chat? Feel free to reach out.
             I'm always open to new opportunities and collaborations.
           </p>
         </motion.div>
@@ -40,37 +49,55 @@ const Contact = () => {
         >
           {/* Email link */}
           <motion.a
-            href="mailto:hello@example.com"
+            href="mailto:alexanderfedchin@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ x: 5 }}
-            className="flex items-center gap-4 p-5 rounded-xl glass hover:glow-magenta transition-all group"
+            className="flex items-center gap-4 p-5 rounded-xl glass transition-all group hover:glow-magenta"
           >
+            {/* Gradient glow background */}
+            <div className="absolute inset-0 rounded-lg bg-neon-magenta opacity-0 group-hover:opacity-15 blur-xl transition-opacity duration-300 -z-10" />
+
             <div className="w-14 h-14 rounded-lg bg-neon-magenta/10 flex items-center justify-center group-hover:bg-neon-magenta/20 transition-colors">
               <Mail className="w-6 h-6 text-neon-magenta" />
             </div>
             <div className="flex-1">
               <span className="text-sm text-muted-foreground">Email</span>
-              <p className="font-medium text-foreground text-lg">hello@example.com</p>
+              <p className="font-medium text-foreground text-lg">
+                alexanderfedchin@gmail.com
+              </p>
             </div>
             <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
           </motion.a>
 
           {/* Location */}
-          <motion.div
+          <motion.a
+            href="https://www.google.com/maps/place/Helsinki,+Finland"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ x: 5 }}
-            className="flex items-center gap-4 p-5 rounded-xl glass"
+            className="flex items-center gap-4 p-5 rounded-xl glass hover:glow-cyan transition-all group"
           >
-            <div className="w-14 h-14 rounded-lg bg-neon-cyan/10 flex items-center justify-center">
+            {/* Gradient glow background */}
+            <div className="absolute inset-0 rounded-lg bg-neon-cyan opacity-0 group-hover:opacity-15 blur-xl transition-opacity duration-300 -z-10" />
+
+            <div className="w-14 h-14 rounded-lg bg-neon-cyan/10 flex items-center justify-center group-hover:bg-neon-cyan/20 transition-colors">
               <MapPin className="w-6 h-6 text-neon-cyan" />
             </div>
             <div className="flex-1">
               <span className="text-sm text-muted-foreground">Location</span>
-              <p className="font-medium text-foreground text-lg">Remote / Worldwide</p>
+              <p className="font-medium text-foreground text-lg">
+                Helsinki, Finland
+              </p>
             </div>
-          </motion.div>
+            <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-secondary transition-colors" />
+          </motion.a>
 
           {/* Social links */}
           <div className="pt-8">
-            <p className="text-center text-muted-foreground mb-6">Or find me on</p>
+            <p className="text-center text-muted-foreground mb-6">
+              Or find me on
+            </p>
             <div className="flex justify-center gap-4">
               {socialLinks.map((link, index) => (
                 <motion.a

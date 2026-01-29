@@ -17,7 +17,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="text-sm text-muted-foreground flex items-center gap-1">
-            Made with <Heart className="w-4 h-4 text-neon-magenta fill-neon-magenta" /> © {new Date().getFullYear()}
+            Alexander Fedchin © {new Date().getFullYear()}
           </p>
 
           {/* Social links */}

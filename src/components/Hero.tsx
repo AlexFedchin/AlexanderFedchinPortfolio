@@ -9,8 +9,8 @@ const Hero = () => {
         <motion.div
           className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-neon-magenta/20 blur-[120px]"
           animate={{
-            x: [0, 50, 0],
-            y: [0, -30, 0],
+            x: [0, 150, 0],
+            y: [0, -120, 0],
             scale: [1, 1.1, 1],
           }}
           transition={{
@@ -22,8 +22,8 @@ const Hero = () => {
         <motion.div
           className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-neon-cyan/20 blur-[120px]"
           animate={{
-            x: [0, -50, 0],
-            y: [0, 30, 0],
+            x: [0, -150, 0],
+            y: [0, 120, 0],
             scale: [1, 1.2, 1],
           }}
           transition={{
@@ -35,12 +35,12 @@ const Hero = () => {
       </div>
 
       {/* Grid pattern overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
                            linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px',
+          backgroundSize: "50px 50px",
         }}
       />
 
@@ -59,7 +59,9 @@ const Hero = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
           >
             <span className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse" />
-            <span className="text-sm text-muted-foreground">Available for work</span>
+            <span className="text-sm text-muted-foreground">
+              Available for work
+            </span>
           </motion.div>
 
           {/* Main heading */}
@@ -70,7 +72,9 @@ const Hero = () => {
             className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
           >
             <span className="block text-foreground">Creative</span>
-            <span className="gradient-text text-glow-magenta">Frontend Developer</span>
+            <span className="text-neon-magenta text-glow-magenta">
+              Frontend Developer
+            </span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -80,8 +84,8 @@ const Hero = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            I craft beautiful, performant, and accessible web experiences 
-            that leave a lasting impression.
+            I craft beautiful, performant, and accessible web experiences that
+            leave a lasting impression.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -122,12 +126,12 @@ const Hero = () => {
               <motion.a
                 key={social.label}
                 href={social.href}
-                whileHover={{ scale: 1.1, y: -2 }}
+                whileHover={{ scale: 1.05, y: -1 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 rounded-xl glass border border-border hover:border-primary hover:glow-magenta transition-all duration-300"
+                className="p-3 rounded-xl glass border border-border hover:border-primary hover:glow-magenta transition-all duration-75 ease-in-out"
                 aria-label={social.label}
               >
-                <social.icon className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
+                <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </motion.a>
             ))}
           </motion.div>
@@ -138,7 +142,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute left-1/2 -translate-x-1/2 translate-y-10"
         >
           <motion.a
             href="#about"
