@@ -6,8 +6,9 @@ const skills = [
   { name: "TypeScript", level: 90 },
   { name: "Next.js", level: 85 },
   { name: "Tailwind CSS", level: 95 },
-  { name: "Framer Motion", level: 80 },
+  { name: "Framer Motion", level: 75 },
   { name: "Node.js", level: 75 },
+  { name: "MongoDB", level: 70 },
 ];
 
 const features = [
@@ -41,7 +42,7 @@ const About = () => {
     <section id="about" className="relative py-32 overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 left-0 w-72 h-72 bg-neon-magenta/10 rounded-full blur-[100px]" />
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-neon-cyan/10 rounded-full blur-[100px]" />
+      <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-neon-cyan/10 rounded-full blur-[100px]" />
 
       <div className="container relative z-10 px-6">
         <motion.div

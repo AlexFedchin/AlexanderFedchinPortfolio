@@ -2,6 +2,15 @@ import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Twitter } from "lucide-react";
 
 const Hero = () => {
+  const socialLinks = [
+    { name: "GitHub", url: "https://github.com/AlexFedchin", icon: Github },
+    {
+      name: "LinkedIn",
+      url: "https://linkedin.com/in/alexander-fedchin",
+      icon: Linkedin,
+    },
+  ];
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated background orbs */}
@@ -118,18 +127,14 @@ const Hero = () => {
             transition={{ delay: 0.9, duration: 0.8 }}
             className="flex items-center justify-center gap-6"
           >
-            {[
-              { icon: Github, href: "#", label: "GitHub" },
-              { icon: Linkedin, href: "#", label: "LinkedIn" },
-              { icon: Twitter, href: "#", label: "Twitter" },
-            ].map((social, index) => (
+            {socialLinks.map((social, index) => (
               <motion.a
-                key={social.label}
-                href={social.href}
+                key={social.name}
+                href={social.url}
                 whileHover={{ scale: 1.05, y: -1 }}
                 whileTap={{ scale: 0.95 }}
                 className="p-3 rounded-xl glass border border-border hover:border-primary hover:glow-magenta transition-all duration-75 ease-in-out"
-                aria-label={social.label}
+                aria-label={social.name}
               >
                 <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </motion.a>

@@ -1,24 +1,20 @@
 import { motion } from "framer-motion";
-import {
-  Mail,
-  MapPin,
-  ArrowUpRight,
-  Github,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
+import { Mail, MapPin, ArrowUpRight, Github, Linkedin } from "lucide-react";
 
 const Contact = () => {
   const socialLinks = [
-    { name: "GitHub", url: "https://github.com", icon: Github },
-    { name: "LinkedIn", url: "https://linkedin.com", icon: Linkedin },
-    { name: "Twitter", url: "https://twitter.com", icon: Twitter },
+    { name: "GitHub", url: "https://github.com/AlexFedchin", icon: Github },
+    {
+      name: "LinkedIn",
+      url: "https://linkedin.com/in/alexander-fedchin",
+      icon: Linkedin,
+    },
   ];
 
   return (
     <section id="contact" className="relative py-32 overflow-hidden">
       {/* Background elements */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-b from-neon-magenta/5 via-neon-cyan/5 to-transparent rounded-full blur-[100px]" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-b from-neon-magenta/5 via-neon-cyan/5 to-transparent rounded-full blur-[100px]" />
 
       <div className="container relative z-10 px-6">
         <motion.div
