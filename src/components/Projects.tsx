@@ -7,7 +7,14 @@ const projects = [
     title: "Kalendarik Web Application",
     description:
       "A full-stack web application built with React, JavaScript, Node.js, Express, and MongoDB. It is built for a TuulilasiPojat auto service, which specializes in repairing and replacing windshields. Application allows managers to conveninetly create and manage customer bookings and simplifies administration work like keeping track of the invoices sent to the insurance companies.",
-    tags: ["React", "JavaScript", "Node.js", "Express", "MongoDB"],
+    tags: [
+      "React",
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Material UI",
+    ],
     image: "/projects/kalendarik.webp",
     liveUrl: "https://tuulilasikalenteri.fi",
     githubUrl: "https://github.com/AlexFedchin/kalendarik",
@@ -44,26 +51,14 @@ const projects = [
   },
   {
     id: 4,
-    title: "Project Name Three",
-    description: "Description of this project and the problem it solves.",
-    tags: ["Vue.js", "Firebase", "SCSS"],
-    image:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Project Name Four",
+    title: "Somesankarit Landing Page",
     description:
-      "A creative project demonstrating animation and interaction skills.",
-    tags: ["React", "Framer Motion", "Three.js"],
-    image:
-      "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80",
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
+      "A landing page I built for social media agency Somesankarit. It was built with React, Vite and Material UI. The design is clean and modern, with a focus on showcasing the agency's services and portfolio. The landing page is fully responsive and features smooth animations and transitions to enhance the user experience. It was my first commercial project and I am proud of how it turned out.",
+    tags: ["React", "Vite", "JavaScript", "Material UI"],
+    image: "/projects/somesankarit.webp",
+    liveUrl: "https://somesankarit.fi",
+    githubUrl: "https://github.com/AlexFedchin/SomesankaritLanding",
+    featured: true,
   },
 ];
 
@@ -150,7 +145,7 @@ const Projects = () => {
                   {/* <span className="text-xs font-mono text-neon-cyan tracking-wider">
                     FEATURED PROJECT
                   </span> */}
-                  <h4 className="text-2xl md:text-3xl font-bold mt-2 mb-4 text-foreground group-hover:text-primary transition-colors">
+                  <h4 className="text-2xl md:text-3xl font-bold mt-2 mb-4 text-foreground group-hover:text-primary group-hover:text-glow-magenta transition-all duration-300 ease-in-out">
                     {project.title}
                   </h4>
                   <p className="text-muted-foreground mb-6 p-4 rounded-xl glass">
@@ -162,7 +157,7 @@ const Projects = () => {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 text-xs font-mono rounded-full bg-neon-magenta/10 text-neon-magenta border border-neon-magenta/30"
+                        className="px-3 py-1 text-xs font-mono rounded-full bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30"
                       >
                         {tag}
                       </span>
