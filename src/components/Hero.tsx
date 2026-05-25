@@ -60,19 +60,6 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center"
         >
-          {/* Status badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
-          >
-            <span className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse" />
-            <span className="text-sm text-muted-foreground">
-              Available for work
-            </span>
-          </motion.div>
-
           {/* Main heading */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -82,7 +69,7 @@ const Hero = () => {
           >
             <span className="block text-foreground">Creative</span>
             <span className="text-neon-magenta text-glow-magenta">
-              Frontend Developer
+              Full Stack Developer
             </span>
           </motion.h1>
 
@@ -93,8 +80,8 @@ const Hero = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            I craft beautiful, performant, and accessible web experiences that
-            leave a lasting impression.
+            I build functional and visually beautiful websites and applications
+            to help your business grow.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -108,7 +95,7 @@ const Hero = () => {
               href="#projects"
               className="group relative px-8 py-4 rounded-xl glass gradient-border overflow-hidden transition-all duration-300 hover:glow-magenta"
             >
-              <span className="relative z-10 font-semibold text-foreground group-hover:text-primary transition-colors">
+              <span className="relative z-10 font-semibold text-foreground transition-colors">
                 View My Work
               </span>
             </a>

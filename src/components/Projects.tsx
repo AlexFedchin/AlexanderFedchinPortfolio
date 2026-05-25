@@ -3,6 +3,25 @@ import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
+    id: 0,
+    title: "Lavly Booking System",
+    description:
+      "A full-stack online classes booking system for a puppy yoga company. It provides clients with a convenient booking system with an integrated payment system by Visma Pay. The system also includes additional features like accounts, discount codes, gift cards purchasing, and etc.",
+    tags: [
+      "React",
+      "Vite",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "MongoDB",
+    ],
+    image: "/projects/lavly.webp",
+    liveUrl: "https://lavly-test.onrender.com",
+    githubUrl: "https://github.com/AlexFedchin/Lavly",
+    featured: true,
+  },
+  {
     id: 1,
     title: "Kalendarik Web Application",
     description:
@@ -90,7 +109,7 @@ const Projects = () => {
         </motion.div>
 
         {/* Featured projects */}
-        <div className="grid gap-8 mb-12">
+        <div className="grid gap-10 mb-12">
           {projects
             .filter((p) => p.featured)
             .map((project, index) => (

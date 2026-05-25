@@ -54,7 +54,7 @@ const Contact = () => {
             {/* Gradient glow background */}
             <div className="absolute inset-0 rounded-lg bg-neon-magenta opacity-0 group-hover:opacity-15 blur-xl transition-opacity duration-300 -z-10" />
 
-            <div className="w-14 h-14 rounded-lg bg-neon-magenta/10 flex items-center justify-center group-hover:bg-neon-magenta/20 transition-colors">
+            <div className="w-14 h-14 hidden sm:flex rounded-lg bg-neon-magenta/10 items-center justify-center group-hover:bg-neon-magenta/20 transition-colors">
               <Mail className="w-6 h-6 text-neon-magenta" />
             </div>
             <div className="flex-1">
@@ -77,7 +77,7 @@ const Contact = () => {
             {/* Gradient glow background */}
             <div className="absolute inset-0 rounded-lg bg-neon-cyan opacity-0 group-hover:opacity-15 blur-xl transition-opacity duration-300 -z-10" />
 
-            <div className="w-14 h-14 rounded-lg bg-neon-cyan/10 flex items-center justify-center group-hover:bg-neon-cyan/20 transition-colors">
+            <div className="w-14 h-14 hidden sm:flex rounded-lg bg-neon-cyan/10 items-center justify-center group-hover:bg-neon-cyan/20 transition-colors">
               <MapPin className="w-6 h-6 text-neon-cyan" />
             </div>
             <div className="flex-1">

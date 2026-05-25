@@ -60,9 +60,9 @@ const About = () => {
             digital experiences
           </h3>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            With years of experience in frontend development, I specialize in
+            With years of experience in full stack development, I specialize in
             building modern web applications that combine beautiful design with
-            exceptional performance.
+            exceptional performance and functionality for the users.
           </p>
         </motion.div>
 
