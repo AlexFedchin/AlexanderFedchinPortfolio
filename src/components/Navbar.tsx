@@ -39,7 +39,7 @@ const Navbar = () => {
           if (e.isIntersecting) setActive(e.target.id);
         });
       },
-      { rootMargin: "-45% 0px -50% 0px" }
+      { rootMargin: "-45% 0px -50% 0px" },
     );
     sections.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
@@ -64,11 +64,15 @@ const Navbar = () => {
             "flex items-center justify-between rounded-full px-3 py-2.5 transition-all duration-500",
             isScrolled
               ? "glass ring-glass pl-5"
-              : "border border-transparent bg-transparent"
+              : "border border-transparent bg-transparent",
           )}
         >
           {/* Logo */}
-          <a href="#" className="group flex items-center gap-2.5" aria-label="Home">
+          <a
+            href="#"
+            className="group flex items-center gap-2.5"
+            aria-label="Home"
+          >
             <span className="grid h-8 w-8 place-items-center rounded-lg border border-white/10 bg-white/[0.04] font-display text-sm font-bold text-foreground transition-colors group-hover:border-accent/50 group-hover:text-accent">
               A
             </span>
@@ -87,7 +91,7 @@ const Navbar = () => {
                   "relative rounded-full px-4 py-2 text-sm transition-colors duration-200",
                   active === link.id
                     ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    : "text-foreground/80 hover:text-foreground",
                 )}
               >
                 {active === link.id && (
