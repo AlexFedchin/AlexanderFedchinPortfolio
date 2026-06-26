@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
+import GlassPanel from "./primitives/GlassPanel";
+import SectionHeading from "./primitives/SectionHeading";
+import Reveal from "./primitives/Reveal";
+import Tag from "./primitives/Tag";
 
 const projects = [
   {
@@ -26,14 +30,7 @@ const projects = [
     title: "Kalendarik Web Application",
     description:
       "A full-stack web application built with React, JavaScript, Node.js, Express, and MongoDB. It is built for a TuulilasiPojat auto service, which specializes in repairing and replacing windshields. Application allows managers to conveninetly create and manage customer bookings and simplifies administration work like keeping track of the invoices sent to the insurance companies.",
-    tags: [
-      "React",
-      "JavaScript",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Material UI",
-    ],
+    tags: ["React", "JavaScript", "Node.js", "Express", "MongoDB", "Material UI"],
     image: "/projects/kalendarik.webp",
     liveUrl: "https://tuulilasikalenteri.fi",
     githubUrl: "https://github.com/AlexFedchin/kalendarik",
@@ -82,179 +79,108 @@ const projects = [
 ];
 
 const Projects = () => {
+  const featured = projects.filter((p) => p.featured);
+
   return (
-    <section id="projects" className="relative py-32 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-neon-magenta/10 rounded-full blur-[150px]" />
-      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-neon-cyan/10 rounded-full blur-[150px]" />
+    <section id="projects" className="relative scroll-mt-24 py-28 md:py-36">
+      <div className="container px-6">
+        <SectionHeading
+          label="02 / Selected Work"
+          title={
+            <>
+              Things I've <span className="text-gradient-cyan">built</span>
+            </>
+          }
+          subtitle="A collection of projects that showcase my passion for building beautiful and functional web applications."
+        />
 
-      <div className="container relative z-10 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-sm font-mono text-primary mb-4 tracking-wider">
-            // SELECTED WORK
-          </h2>
-          <h3 className="text-4xl md:text-5xl font-bold mb-6">
-            My <span className="gradient-text">Projects</span>
-          </h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            A collection of projects that showcase my passion for building
-            beautiful and functional web applications.
-          </p>
-        </motion.div>
-
-        {/* Featured projects */}
-        <div className="grid gap-10 mb-12">
-          {projects
-            .filter((p) => p.featured)
-            .map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className={`group grid md:grid-cols-2 gap-8 items-center ${
-                  index % 2 === 1 ? "md:flex-row-reverse" : ""
-                }`}
-              >
-                {/* Image */}
-                <motion.div
-                  className={`relative overflow-hidden rounded-2xl ${
-                    index % 2 === 1 ? "md:order-2" : ""
-                  }`}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent z-10" />
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div
-                    className={`absolute bottom-4 ${index % 2 === 1 ? "right-4" : "left-4"} z-20 flex gap-3`}
+        <div className="mt-16 flex flex-col gap-20 md:gap-28">
+          {featured.map((project, index) => {
+            const reversed = index % 2 === 1;
+            return (
+              <Reveal key={project.id}>
+                <article className="group grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+                  {/* Image */}
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`lg:col-span-7 ${
+                      reversed ? "lg:order-2" : ""
+                    }`}
                   >
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={project.liveUrl}
-                      className="flex items-center gap-2 px-4 py-2 rounded-lg glass text-sm font-medium hover:glow-magenta transition-all"
-                    >
-                      <ExternalLink className="w-4 h-4" /> Live Demo
-                    </a>
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={project.githubUrl}
-                      className="flex items-center gap-2 px-4 py-2 rounded-lg glass text-sm font-medium hover:glow-cyan transition-all"
-                    >
-                      <Github className="w-4 h-4" /> Code
-                    </a>
-                  </div>
-                </motion.div>
+                    <GlassPanel className="overflow-hidden p-2">
+                      <div className="relative overflow-hidden rounded-2xl">
+                        <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-30" />
+                        {/* cyan wash on hover */}
+                        <div className="pointer-events-none absolute inset-0 z-10 bg-accent/10 opacity-0 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-100" />
+                        <img
+                          src={project.image}
+                          alt={`${project.title} preview`}
+                          loading="lazy"
+                          className="aspect-[16/10] w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                        />
+                      </div>
+                    </GlassPanel>
+                  </a>
 
-                {/* Content */}
-                <div
-                  className={`${index % 2 === 1 ? "md:order-1 md:text-right" : ""}`}
-                >
-                  {/* <span className="text-xs font-mono text-neon-cyan tracking-wider">
-                    FEATURED PROJECT
-                  </span> */}
-                  <h4 className="text-2xl md:text-3xl font-bold mt-2 mb-4 text-foreground group-hover:text-primary group-hover:text-glow-magenta transition-all duration-300 ease-in-out">
-                    {project.title}
-                  </h4>
-                  <p className="text-muted-foreground mb-6 p-4 rounded-xl glass">
-                    {project.description}
-                  </p>
+                  {/* Content */}
                   <div
-                    className={`flex flex-wrap gap-2 ${index % 2 === 1 ? "md:justify-end" : ""}`}
+                    className={`lg:col-span-5 ${
+                      reversed ? "lg:order-1" : ""
+                    }`}
                   >
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 text-xs font-mono rounded-full bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30"
-                      >
-                        {tag}
+                    <div className="mb-5 flex items-center gap-4">
+                      <span className="font-display text-sm font-semibold text-accent">
+                        {String(index + 1).padStart(2, "0")}
                       </span>
-                    ))}
+                      <span className="h-px flex-1 bg-white/10" />
+                      <span className="font-mono text-xs text-muted-foreground">
+                        {String(featured.length).padStart(2, "0")}
+                      </span>
+                    </div>
+
+                    <h3 className="font-display text-2xl font-semibold text-foreground transition-colors duration-300 group-hover:text-accent md:text-3xl">
+                      {project.title}
+                    </h3>
+
+                    <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+                      {project.description}
+                    </p>
+
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <Tag key={tag}>{tag}</Tag>
+                      ))}
+                    </div>
+
+                    <div className="mt-7 flex flex-wrap items-center gap-3">
+                      <motion.a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileTap={{ scale: 0.97 }}
+                        className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-all duration-200 hover:shadow-[0_0_26px_-6px_hsl(var(--accent)/0.6)]"
+                      >
+                        Live demo
+                        <ArrowUpRight className="h-4 w-4" />
+                      </motion.a>
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-200 hover:border-accent/40"
+                      >
+                        <Github className="h-4 w-4" />
+                        Source
+                      </a>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
-
-        {/* Other projects grid */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-8"
-        >
-          <h4 className="text-2xl font-bold mb-8 text-center">
-            Other <span className="text-primary">Projects</span>
-          </h4>
-        </motion.div> */}
-
-        {/* <div className="grid md:grid-cols-2 gap-6">
-          {projects
-            .filter((p) => !p.featured)
-            .map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group p-6 rounded-2xl glass gradient-border hover:glow-cyan transition-all duration-300"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-neon-cyan/10 flex items-center justify-center">
-                    <Github className="w-5 h-5 text-neon-cyan" />
-                  </div>
-                  <div className="flex gap-3">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <ArrowUpRight className="w-5 h-5" />
-                    </a>
-                  </div>
-                </div>
-                <h5 className="text-xl font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
-                  {project.title}
-                </h5>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs font-mono text-muted-foreground"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-        </div> */}
       </div>
     </section>
   );

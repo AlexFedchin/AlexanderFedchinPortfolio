@@ -1,3 +1,4 @@
+import Backdrop from "@/components/primitives/Backdrop";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -7,12 +8,15 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="relative min-h-screen overflow-x-hidden">
+      <Backdrop />
       <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Projects />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );

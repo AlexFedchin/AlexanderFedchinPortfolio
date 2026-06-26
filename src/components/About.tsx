@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { Code2, Palette, Zap, Sparkles } from "lucide-react";
+import GlassPanel from "./primitives/GlassPanel";
+import SectionHeading from "./primitives/SectionHeading";
+import Reveal from "./primitives/Reveal";
 
 const skills = [
   { name: "React", level: 95 },
@@ -39,112 +42,147 @@ const features = [
 
 const About = () => {
   return (
-    <section id="about" className="relative py-32 overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-0 w-72 h-72 bg-neon-magenta/10 rounded-full blur-[100px]" />
-      <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-neon-cyan/10 rounded-full blur-[100px]" />
+    <section id="about" className="relative scroll-mt-24 py-28 md:py-36">
+      <div className="container px-6">
+        <SectionHeading
+          label="01 / About"
+          title={
+            <>
+              Passionate about{" "}
+              <span className="text-gradient-cyan">crafting</span> digital
+              experiences
+            </>
+          }
+        />
 
-      <div className="container relative z-10 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-sm font-mono text-primary mb-4 tracking-wider">
-            // ABOUT ME
-          </h2>
-          <h3 className="text-4xl md:text-5xl font-bold mb-6">
-            Passionate about <span className="gradient-text">crafting</span>{" "}
-            digital experiences
-          </h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            With years of experience in full stack development, I specialize in
-            building modern web applications that combine beautiful design with
-            exceptional performance and functionality for the users.
-          </p>
-        </motion.div>
+        {/* ── Bento: intro + profile terminal ── */}
+        <div className="mt-14 grid gap-4 lg:grid-cols-3">
+          <Reveal className="lg:col-span-2">
+            <GlassPanel className="flex h-full flex-col justify-between gap-8 p-8 md:p-10">
+              <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+                With years of experience in full-stack development, I specialize
+                in building modern web applications that combine{" "}
+                <span className="text-foreground">beautiful design</span> with{" "}
+                <span className="text-foreground">exceptional performance</span>{" "}
+                and functionality for the users.
+              </p>
+              <dl className="grid grid-cols-3 gap-4 border-t border-white/5 pt-7">
+                {[
+                  { k: "Featured projects", v: "5+" },
+                  { k: "Core stack", v: "React" },
+                  { k: "Based in", v: "Helsinki" },
+                ].map((s) => (
+                  <div key={s.k}>
+                    <dt className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                      {s.k}
+                    </dt>
+                    <dd className="mt-1 font-display text-2xl font-semibold text-foreground md:text-3xl">
+                      {s.v}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </GlassPanel>
+          </Reveal>
 
-        {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="group relative will-change-transform"
-            >
-              {/* Gradient glow background */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-neon-magenta to-neon-cyan opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300 -z-10" />
+          {/* profile "terminal" card */}
+          <Reveal delay={0.1}>
+            <GlassPanel strong className="h-full overflow-hidden p-0">
+              <div className="flex items-center gap-2 border-b border-white/5 px-4 py-3">
+                <span className="h-3 w-3 rounded-full bg-white/15" />
+                <span className="h-3 w-3 rounded-full bg-white/15" />
+                <span className="h-3 w-3 rounded-full bg-accent/70" />
+                <span className="ml-2 font-mono text-xs text-muted-foreground">
+                  ~/profile.json
+                </span>
+              </div>
+              <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-relaxed">
+                <code>
+                  <span className="text-muted-foreground">{"{"}</span>
+                  {"\n  "}
+                  <span className="text-accent">"name"</span>
+                  <span className="text-muted-foreground">: </span>
+                  <span className="text-foreground">"Alexander Fedchin"</span>,
+                  {"\n  "}
+                  <span className="text-accent">"role"</span>
+                  <span className="text-muted-foreground">: </span>
+                  <span className="text-foreground">"Full-Stack Dev"</span>,
+                  {"\n  "}
+                  <span className="text-accent">"focus"</span>
+                  <span className="text-muted-foreground">: </span>
+                  <span className="text-foreground">"web apps"</span>,{"\n  "}
+                  <span className="text-accent">"status"</span>
+                  <span className="text-muted-foreground">: </span>
+                  <span className="text-foreground">"available"</span>
+                  {"\n"}
+                  <span className="text-muted-foreground">{"}"}</span>
+                </code>
+              </pre>
+            </GlassPanel>
+          </Reveal>
+        </div>
 
-              <div className="relative p-6 rounded-2xl glass will-change-transform gradient-border transition-all ease-in-out">
-                <div className="w-12 h-12 rounded-xl bg-neon-cyan/10 flex items-center justify-center mb-4 group-hover:bg-neon-cyan/20 transition-colors">
-                  <feature.icon className="w-6 h-6 text-neon-cyan" />
+        {/* ── Feature tiles ── */}
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature, i) => (
+            <Reveal key={feature.title} delay={i * 0.08}>
+              <GlassPanel
+                interactive
+                className="group h-full p-6 transition-transform duration-300 hover:-translate-y-1"
+              >
+                <div className="mb-5 grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/[0.03] text-accent transition-colors duration-300 group-hover:bg-accent/10">
+                  <feature.icon className="h-5 w-5" />
                 </div>
-                <h4 className="text-lg font-semibold mb-2 text-foreground">
+                <h4 className="mb-2 font-display text-lg font-semibold text-foreground">
                   {feature.title}
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {feature.description}
                 </p>
-              </div>
-            </motion.div>
+              </GlassPanel>
+            </Reveal>
           ))}
         </div>
 
-        {/* Skills section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto"
-        >
-          <h4 className="text-2xl font-bold mb-8 text-center">
-            My <span className="text-primary">Tech Stack</span>
-          </h4>
-          <div className="grid gap-6">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-medium text-foreground">
-                    {skill.name}
-                  </span>
-                  <span className="text-sm font-mono text-muted-foreground">
-                    {skill.level}%
-                  </span>
+        {/* ── Skills ── */}
+        <Reveal className="mt-4">
+          <GlassPanel className="p-8 md:p-10">
+            <div className="mb-8 flex items-baseline justify-between">
+              <h4 className="font-display text-xl font-semibold text-foreground">
+                Tech Stack
+              </h4>
+              <span className="eyebrow">Proficiency</span>
+            </div>
+            <div className="grid gap-x-12 gap-y-6 md:grid-cols-2">
+              {skills.map((skill, i) => (
+                <div key={skill.name}>
+                  <div className="mb-2 flex items-center justify-between">
+                    <span className="text-sm font-medium text-foreground">
+                      {skill.name}
+                    </span>
+                    <span className="font-mono text-xs text-muted-foreground">
+                      {skill.level}%
+                    </span>
+                  </div>
+                  <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 1,
+                        delay: i * 0.08,
+                        ease: "easeOut",
+                      }}
+                      className="h-full rounded-full bg-gradient-to-r from-white/70 to-accent"
+                      style={{ boxShadow: "0 0 14px hsl(var(--accent) / 0.5)" }}
+                    />
+                  </div>
                 </div>
-                <div className="h-2 rounded-full bg-muted overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 1,
-                      delay: index * 0.1,
-                      ease: "easeOut",
-                    }}
-                    className="h-full rounded-full bg-gradient-to-r from-neon-magenta to-neon-cyan"
-                    style={{
-                      boxShadow: "0 0 20px hsl(320 100% 60% / 0.5)",
-                    }}
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+              ))}
+            </div>
+          </GlassPanel>
+        </Reveal>
       </div>
     </section>
   );

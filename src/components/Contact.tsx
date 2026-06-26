@@ -1,119 +1,109 @@
 import { motion } from "framer-motion";
 import { Mail, MapPin, ArrowUpRight, Github, Linkedin } from "lucide-react";
+import GlassPanel from "./primitives/GlassPanel";
+import SectionHeading from "./primitives/SectionHeading";
+import Reveal from "./primitives/Reveal";
+
+const socialLinks = [
+  { name: "GitHub", url: "https://github.com/AlexFedchin", icon: Github },
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/alexander-fedchin",
+    icon: Linkedin,
+  },
+];
 
 const Contact = () => {
-  const socialLinks = [
-    { name: "GitHub", url: "https://github.com/AlexFedchin", icon: Github },
-    {
-      name: "LinkedIn",
-      url: "https://linkedin.com/in/alexander-fedchin",
-      icon: Linkedin,
-    },
-  ];
-
   return (
-    <section id="contact" className="relative py-32 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-b from-neon-magenta/5 via-neon-cyan/5 to-transparent rounded-full blur-[100px]" />
+    <section id="contact" className="relative scroll-mt-24 py-28 md:py-36">
+      {/* soft cyan glow anchoring the closing section */}
+      <div className="pointer-events-none absolute left-1/2 top-1/3 -z-10 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-[150px]" />
 
-      <div className="container relative z-10 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-sm font-mono text-primary mb-4 tracking-wider">
-            // GET IN TOUCH
-          </h2>
-          <h3 className="text-4xl md:text-5xl font-bold mb-6">
-            Let's <span className="gradient-text">Connect</span>
-          </h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Have a project in mind or just want to chat? Feel free to reach out.
-            I'm always open to new opportunities and collaborations.
-          </p>
-        </motion.div>
+      <div className="container px-6">
+        <SectionHeading
+          align="center"
+          label="03 / Contact"
+          title={
+            <>
+              Let's <span className="text-gradient-cyan">connect</span>
+            </>
+          }
+          subtitle="Have a project in mind or just want to chat? Feel free to reach out. I'm always open to new opportunities and collaborations."
+        />
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mx-auto space-y-6"
-        >
-          {/* Email link */}
-          <motion.a
-            href="mailto:alexanderfedchin@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ x: 5 }}
-            className="flex items-center gap-4 p-5 rounded-xl glass transition-all group hover:glow-magenta"
-          >
-            {/* Gradient glow background */}
-            <div className="absolute inset-0 rounded-lg bg-neon-magenta opacity-0 group-hover:opacity-15 blur-xl transition-opacity duration-300 -z-10" />
-
-            <div className="w-14 h-14 hidden sm:flex rounded-lg bg-neon-magenta/10 items-center justify-center group-hover:bg-neon-magenta/20 transition-colors">
-              <Mail className="w-6 h-6 text-neon-magenta" />
-            </div>
-            <div className="flex-1">
-              <span className="text-sm text-muted-foreground">Email</span>
-              <p className="font-medium text-foreground text-lg">
-                alexanderfedchin@gmail.com
-              </p>
-            </div>
-            <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-          </motion.a>
+        <div className="mx-auto mt-14 max-w-3xl space-y-4">
+          {/* Email — primary */}
+          <Reveal>
+            <GlassPanel
+              as="a"
+              interactive
+              strong
+              href="mailto:alexanderfedchin@gmail.com"
+              className="group flex items-center gap-5 p-6 sm:p-8"
+            >
+              <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-white/10 bg-white/[0.03] text-accent transition-colors duration-300 group-hover:bg-accent/10">
+                <Mail className="h-6 w-6" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                  Email
+                </span>
+                <p className="truncate font-display text-lg font-semibold text-foreground sm:text-2xl">
+                  alexanderfedchin@gmail.com
+                </p>
+              </div>
+              <ArrowUpRight className="h-6 w-6 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+            </GlassPanel>
+          </Reveal>
 
           {/* Location */}
-          <motion.a
-            href="https://www.google.com/maps/place/Helsinki,+Finland"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ x: 5 }}
-            className="flex items-center gap-4 p-5 rounded-xl glass hover:glow-cyan transition-all group"
-          >
-            {/* Gradient glow background */}
-            <div className="absolute inset-0 rounded-lg bg-neon-cyan opacity-0 group-hover:opacity-15 blur-xl transition-opacity duration-300 -z-10" />
+          <Reveal delay={0.08}>
+            <GlassPanel
+              as="a"
+              interactive
+              href="https://www.google.com/maps/place/Helsinki,+Finland"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-5 p-6 sm:p-8"
+            >
+              <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-white/10 bg-white/[0.03] text-accent transition-colors duration-300 group-hover:bg-accent/10">
+                <MapPin className="h-6 w-6" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                  Location
+                </span>
+                <p className="font-display text-lg font-semibold text-foreground sm:text-2xl">
+                  Helsinki, Finland
+                </p>
+              </div>
+              <ArrowUpRight className="h-6 w-6 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+            </GlassPanel>
+          </Reveal>
 
-            <div className="w-14 h-14 hidden sm:flex rounded-lg bg-neon-cyan/10 items-center justify-center group-hover:bg-neon-cyan/20 transition-colors">
-              <MapPin className="w-6 h-6 text-neon-cyan" />
-            </div>
-            <div className="flex-1">
-              <span className="text-sm text-muted-foreground">Location</span>
-              <p className="font-medium text-foreground text-lg">
-                Helsinki, Finland
-              </p>
-            </div>
-            <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-secondary transition-colors" />
-          </motion.a>
-
-          {/* Social links */}
-          <div className="pt-8">
-            <p className="text-center text-muted-foreground mb-6">
+          {/* Socials */}
+          <Reveal delay={0.16} className="pt-6">
+            <p className="mb-5 text-center text-sm text-muted-foreground">
               Or find me on
             </p>
-            <div className="flex justify-center gap-4">
-              {socialLinks.map((link, index) => (
+            <div className="flex justify-center gap-3">
+              {socialLinks.map((link) => (
                 <motion.a
                   key={link.name}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  className="w-14 h-14 rounded-xl glass flex items-center justify-center hover:glow-magenta transition-all group"
+                  whileHover={{ y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group grid h-14 w-14 place-items-center rounded-2xl border border-white/10 bg-white/[0.03] text-muted-foreground transition-colors duration-200 hover:border-accent/40 hover:text-foreground"
+                  aria-label={link.name}
                 >
-                  <link.icon className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <link.icon className="h-6 w-6" />
                 </motion.a>
               ))}
             </div>
-          </div>
-        </motion.div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
